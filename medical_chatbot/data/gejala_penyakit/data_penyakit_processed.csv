@@ -1,0 +1,101 @@
+penyakit,diagnosis,gejala_processed,diagnosis_processed
+"menggigil, demam, sakit kepala",Malaria (bentuk benigma),gigil demam sakit kepala,malaria bentuk benigma
+"Kaku kuduk, penurunan kesadaran, muntah proyektil, sakit kepala",Meningitis + perdarahan subarachnoid,kaku kuduk turun sadar muntah proyektil sakit kepala,meningitis darah subarachnoid
+"Mata lengket, mata berair, pandangan sedikit kabur, kelopak mata membengkak",,mata lengket mata air pandang sedikit kabur kelopak mata bengkak,
+"Pipi bengkak, nyeri saat mengunyah, nyeri testis",Parotitis,pipi bengkak nyeri kunyah nyeri testis,parotitis
+"Gusi bengkak, gusi kemerahan, gusi berdarah",,gusi bengkak gusi merah gusi darah,
+"Sakit gigi, gigi sensitif pada makanan dingin atau panas, gusi bengkak",Karies dentis,sakit gigi gigi sensitif makan dingin panas gusi bengkak,karies dentis
+"Hidung tersumbat, bersin, batuk, sakit tenggorokan",Common cold,hidung sumbat bersin batuk sakit tenggorok,common cold
+"Hidung keluar lendir, choncae nasal kebiruan, bersin-bersin",Rinitis alergi,hidung keluar lendir choncae nasal biru bersinbersin,rinitis alergi
+"Hidung berlendir, demam, choncae nasal kemerahan, bersin-bersin",Rinitis bacterial,hidung lendir demam choncae nasal merah bersinbersin,rinitis bacterial
+"Hidung bau, nyeri di dalam hidung, ada krusta di dalam hidung",Rinitis sika,hidung bau nyeri hidung krusta hidung,rinitis sika
+"Cuping telinga sakit, cuping telinga berdungkul-dungkul, demam",Perikondritis,cuping telinga sakit cuping telinga berdungkuldungkul demam,perikondritis
+"Telinga sakit, keluar lendir dari telinga, pendengaran tidak terganggu, nyeri mengunyah",Otitis eksterna,telinga sakit keluar lendir telinga dengar ganggu nyeri kunyah,otitis eksterna
+"Nyeri telinga, telinga terasa penuh, bisa demam",Otitis media stadium oklusi,nyeri telinga telinga asa penuh demam,otitis media stadium oklusi
+"Nyeri telinga, mukosa telinga edem, gendang telinga kemerahan",Otitis media stadium hiperemis,nyeri telinga mukosa telinga edem gendang telinga merah,otitis media stadium hiperemis
+"Nyeri telinga hebat, demam tinggi, gendang telinga menonjol (bulging)",Otitis media stadium supurasi,nyeri telinga hebat demam tinggi gendang telinga tonjol bulging,otitis media stadium supurasi
+"Nyeri telinga, keluar nanah dari telinga, demam berkurang",Otitis media stadium perforasi,nyeri telinga keluar nanah telinga demam kurang,otitis media stadium perforasi
+"Sakit tenggorokan, demam, faring berwarna merah",Faringitis,sakit tenggorok demam faring warna merah,faringitis
+"Suara serak, demam, sakit kerongkongan",Laringitis,suara serak demam sakit kerongkongan,laringitis
+"Batuk lebih dari tiga minggu, sesak napas atau nyeri dada, dahak berdarah, keringat malam, nafsu makan berkurang, berat badan menurun",,batuk lebih tiga minggu sesak napas nyeri dada dahak darah keringat malam nafsu makan kurang berat badan turun,
+"Demam, menggigil, suhu tubuh meningkat, batuk berdahak kadang disertai darah, sesak nafas, nyeri dada",,demam gigil suhu tubuh tingkat batuk dahak kadang serta darah sesak nafas nyeri dada,
+"Batuk, batuk darah, sesak napas, demam berulang, napas baru, napas bau",Bronkiektasis,batuk batuk darah sesak napas demam ulang napas baru napas bau,bronkiektasis
+"Demam, menggigil, batuk produktif dengan sputum amis, sputum kuning kehijauan",Abses paru,demam gigil batuk produktif sputum amis sputum kuning hijau,abses paru
+"Nyeri ulu hati, nyeri jika belum makan, lemas",Gastritis,nyeri ulu hati nyeri makan lemas,gastritis
+"Nyeri perut sebelah kanan atas, perut terasa begah/kembung, pipis seperti teh, feses warna pucat.",Hepatitis,nyeri perut belah kanan atas perut asa begahkembung pipis teh feses warna pucat,hepatitis
+"Nyeri perut kanan atas, pipis seperti teh, perempuan, obesitas, fertile, feses warna pucat, demam",Cholesistitis,nyeri perut kanan atas pipis teh perempuan obesitas fertile feses warna pucat demam,cholesistitis
+"Nyeri perut sebelah kanan bawah, awalnya nyeri di sekitar daerah pusar, lemas",Appendicitis,nyeri perut belah kanan bawah awal nyeri daerah pusar lemas,appendicitis
+"Nyeri di seluruh bagian perut, tidak nafsu makan, BAB terganggu",Peritonitis,nyeri seluruh bagi perut nafsu makan bab ganggu,peritonitis
+"BAB berdarah, nyeri perut, BAB berlendir",Kolitis,bab darah nyeri perut bab lendir,kolitis
+"Diare dengan feses seperti cucian beras, dehidrasi, lemas, muntah hebat",Kolera,diare feses cuci beras dehidrasi lemas muntah hebat,kolera
+"Demam, muntah, diare cair, ampas sedikit seperti biji Lombok, feses asam",,demam muntah diare cair ampas sedikit biji lombok feses asam,
+"Diare cair dengan ampas banyak, volume banyak, nyeri saat BAB",Diare bacterial,diare cair ampas banyak volume banyak nyeri bab,diare bacterial
+"Feses berdarah, riwayat makanan tidak bersih, diare tidak terlalu sering",Disentri,feses darah riwayat makan bersih diare terlalu sering,disentri
+"Demam, kaku tubuh, kaku rahang",Tetanus,demam kaku tubuh kaku rahang,tetanus
+"Demam, kelemahan otot, hipotonia",Botulisme Infantilis,demam lemah otot hipotonia,botulisme infantil
+"Nyeri saat berhubungan seks, nyeri daerah pinggul, sekret mucoid dari vagina",Servisitis,nyeri hubung seks nyeri daerah pinggul sekret mucoid vagina,servisitis
+"Demam, pembengkakan pada KGB (kelenjar getah bening), tubuh terasa sakit, memerah dan membengkak.",Filariasis,demam bengkak kgb kelenjar getah bening tubuh asa sakit merah bengkak,filariasis
+"Nyeri kolik daerah pinggang, malaise, mual, kencing bisa berdarah",,nyeri kolik daerah pinggang malaise mual kencing darah,
+"Nyeri pinggang, kencing mikrohematuria, demam",Pyelonephritis,nyeri pinggang kencing mikrohematuria demam,pyelonephritis
+"Nyeri saat kencing, kencing bernanah, demam, riwayat seks bebas atau oral seks",Gonore,nyeri kencing kencing nanah demam riwayat seks bebas oral seks,gonore
+"Luka tidak nyeri di daerah penis, riwayat seks bebas, demam",Sifilis,luka nyeri daerah penis riwayat seks bebas demam,sifilis
+"Demam sore hari, diare, tubuh lemas",Typhoid,demam sore hari diare tubuh lemas,typhoid
+"Demam tinggi, diare, mual muntah",Shigellosis,demam tinggi diare mual muntah,shigellosis
+"Batuk hebat dengan suara melengking, gelisah, bersin- bersin",Pertussis,batuk hebat suara lengking gelisah bersin bersin,pertussis
+"Demam, nyeri, vesikel dengan persebaran sesuai dermatom. Warna merah",Herpes zoster,demam nyeri vesikel sebar sesuai dermatom warna merah,herpes zoster
+"Vesikul di kulit berbentuk kubah berisi delle (seperti nasi), demam, lemas",Moluscum contagiosum,vesikul kulit bentuk kubah isi delle nasi demam lemas,moluscum contagiosum
+"Demam pola pelana kuda, bitnik-bintik merah di kulit, lemas, dehidrasi, riwayat digigit nyamuk",DBD,demam pola pelana kuda bitnikbintik merah kulit lemas dehidrasi riwayat gigit nyamuk,dbd
+"bercak tipis seperti panu di badan yang lama-lama menyebar, bintil-bintil kemerahan, alis rambut rontok, muka benjol-benjol dan tegang, kulit menipis dan mengkilat",Kusta,bercak tipis panu badan lamalama sebar bintilbintil merah alis rambut rontok muka benjolbenjol tegang kulit tip kilat,kusta
+"Nyeri di daerah pinggang secara menyeluruh, demam, malaise",Pelvic inflammatory disease,nyeri daerah pinggang seluruh demam malaise,pelvic inflammatory disease
+"Demam, kulit kemerahan, vesikel dengan pola garis lurus, riwayat digigit tomcat",Dermatitis venenata,demam kulit merah vesikel pola garis lurus riwayat gigit tomcat,dermatitis venenata
+"Sering kencing, nyeri di daerah perut bagian bawah, demam, sakit saat kencing",Sistitis,sering kencing nyeri daerah perut bagi bawah demam sakit kencing,sistitis
+" timbul papula yang akan berubah segera menjadi vesikuler yang berisi cairan berwarna biru gelap, demam subfebris, sakit kepala",Antrax Kutaneus,timbul papula ubah segera jadi vesikuler isi cair warna biru gelap demam subfebris sakit kepala,antrax kutaneus
+"Demam, nyeri perut, mual muntah, lemas, muntah darah, diare berdarah, selera makan turun",Antrax intestinal,demam nyeri perut mual muntah lemas muntah darah diare darah selera makan turun,antrax intestinal
+"mual, muntah, kram perut, mulut kering dan diare. Gejala saraf:pandangan kabur, kelopak mata jatuh, fotofobia, kekakuan sendi, gangguan bicara dan tidak dapat menelan makanan. Kelemahan otot (otot penggerak kepala, otot lengan atas, otot pernapasan, otot tungkai bagian bawah.",Botulismus,mual muntah kram perut mulut kering diare gejala sarafpandangan kabur kelopak mata jatuh fotofobia kaku sendi ganggu bicara tel makan lemah otot otot gerak kepala otot lengan atas otot napas otot tungkai bagi bawah,botulismus
+"nyeri pelvic, secret mikropurulen, erosi serviks",Servisitis,nyeri pelvic secret mikropurulen erosi serviks,servisitis
+"Nyeri abdomen bawah, serviks, uterus dan limfonodus, menggigil, panas, pendarahan vagina, pengeluaran secret vagina, disuria",Salpingitis,nyeri abdomen bawah serviks uterus limfonodus gigil panas darah vagina keluar secret vagina disuria,salpingitis
+"disuria, piuria, sering kencing",Sindrom Uretra,disuria piuria sering kencing,sindrom uretra
+"nyeri tekan pada meatus uretra, pruritis dan sekret uretra, eritema, disuria",Uretritis,nyeri tekan meatus uretra pruritis sekret uretra eritema disuria,uretritis
+"Nyeri punggung bawah, ejakulasi yang nyeri, nokturia, disuria",Prostatitis,nyeri punggung bawah ejakulasi nyeri nokturia disuria,prostatitis
+"pembengkakan skrotum yang nyeri dan kemerahan, sekret uretra, rasa nyeri pada testis dan skrotum, daerah paha dan pangkal paha",Epididimis,bengkak skrotum nyeri merah sekret uretra rasa nyeri testis skrotum daerah paha pangkal paha,epididimis
+"Nyeri, fotofobia, rasa gatal dan panas seperti terbakar",Konjungtivitis,nyeri fotofobia rasa gatal panas bakar,konjungtivitis
+"Diare, pruritis, ulserasi difus/diskrit pada kolon rektosigmoid",Proktitis,diare pruritis ulserasi difusdiskrit kolon rektosigmoid,proktitis
+"uretritis yang meliputi disuria, pembengkakan pada tempat infeksi, asimptomatik",Gonore (L),uretritis liput disuria bengkak tempat infeksi asimptomatik,gonore
+"Malaise,menggigil, nyeri punggung",Listeriosis,malaisemenggigil nyeri punggung,listeriosis
+"demam, menggigil,sakit kepala,kaku kuduk,muntah,letargi,brakikar di, ruam kadang terjadi",Meningitis,demam menggigilsakit palaka kudukmuntahletargibrakikar ruam kadang jadi,meningitis
+"nyeri telinga, drainase telinga, vertigo, tinitus",Otitis media,nyeri telinga drainase telinga vertigo tinitus,otitis media
+"malaise dan demam, nyeri pada kelenjar limfe regional, daerah hemorragik mengalami nekrosis",Plague (Penyakit Pes bubo),malaise demam nyeri kelenjar limfe regional daerah hemorragik alami nekrosis,plague sakit pes bubo
+" demam tinggi, takikardia, takipnea, batuk produktif",Primary pneumonic plague (penyakit pes paru,demam tinggi takikardia takipnea batuk produktif,primary pneumonic plague sakit pes paru
+"suhu tubuh tinggi, batuk disertai sputum yang purulent berwarna kuning atau berdarah, dipnea, ronki disertai penurunan bunyi napas",Pneumonia,suhu tubuh tinggi batuk serta sputum purulent warna kuning darah dipnea ronki serta turun bunyi napas,pneumonia
+" nyeri abdomen, diare hebat, demam",Salmonelosis,nyeri abdomen diare hebat demam,salmonelosis
+"demam tinggi, sakit kepala, konstipasi",Infeksi Tifoid,demam tinggi sakit kepala konstipasi,infeksi tifoid
+"diare disertai tenesmus, mual, muntah, nyeri disertai distensi abdomen, feses mengandung pus, mukusm dan darah, dehidrasi, penurunan berat badan",Shigolisis Anak,diare serta tenesmus mual muntah nyeri serta distensi abdomen feses kandung pus mukusm darah dehidrasi turun berat badan,shigolisis anak
+"muncul luka atau tukak, luka tidak menimbulkan rasa sakit,luka berkembang pada bagian tubuh seperti pada penis, vagina, anus serta dapat muncul di mulut atau bibir, amandel, atau jari",Sifilis Primer,muncul luka tukak luka timbul rasa sakitluka kembang bagi tubuh penis vagina anus muncul mulut bibir amandel jari,sifilis primer
+"spasme dan peningkatan tonus otot dekat luka, sulitnya mengunyah dan menelan makanan akibat dari kejang otot, kejang otot pada daerah yang terkena luka",Tetanus Lokal,spasme tingkat tonus otot dekat luka sulit kunyah tel makan akibat kejang otot kejang otot daerah kena luka,tetanus lokal
+" Demam, keringat malam, batuk, nyeri dada pleuritic, obstruksi saluran pernapasan",Tuberkulosis,demam keringat malam batuk nyeri dada pleuritic obstruksi salur napas,tuberkulosis
+"nyeri saat berkemih, rasa ingin kencing tapi tidak bisa, urin lebih berbau, nyeri di suprapubic",infeksi Saluran Kemih (Sistitis),nyeri kemih rasa kencing urin lebih bau nyeri suprapubic,infeksi salur kemih sistitis
+"demam tidak tinggi, bersin- bersin, infeksi konjungtiva, anorexia",Batuk Rejan (Pertusis),demam tinggi bersin bersin infeksi konjungtiva anorexia,batuk rejan pertusis
+"ruam yang gatal terdri dari macula-makula kecil, lesi dan demam lebih dari tujuh hari, pembentukan parut pada ekstremitas",,ruam gatal terdri maculamakula kecil lesi demam lebih tujuh hari bentuk parut ekstremitas,
+"tenggorok yang nyeri, merah dan bengkak, peningkatan salivasi, nyeri hebat pada mulut, pembentukan vesikel pada lidah, gingiva, dan mukosa pipi, warna lesi merah",Herpes Simpleks Tipe 1,tenggorok nyeri merah bengkak tingkat salivasi nyeri hebat mulut bentuk vesikel lidah gingiva mukosa pipi warna lesi merah,herpes simpleks tipe
+"vesikel yang terlokasilisasi berisi cairan dan ditemukan pada serviks, lania, vulva, kulit perianal, vagina atau batang penis, parastesis di daerah yang terkena, disuria",Herpes Simpleks Tipe 2,vesikel terlokasilisasi isi cair temu serviks lania vulva kulit perianal vagina batang penis parastesis daerah kena disuria,herpes simpleks tipe
+"nyeri pada dermatom saraf, priritis, perestesia pada batang tubuh atau lengan, lesi kulit kecil-kecil berwarna merah",Herpes Zoster,nyeri dermatom saraf priritis estesia batang tubuh lengan lesi kulit kecilkecil warna merah,herpes zoster
+"penurunan berat badan cepat, batuk kering, demam kambuhan, mudah letih tidak jelas penyebabnya, pembengkakan nodus limfe pada daerah aksila, lipat paha atau leher, diare yang berlangsung lebih dari satu minggu",Infeksi HIV,turun berat badan cepat batuk kering demam kambuh mudah letih jelas sebab bengkak nodus limfe daerah aksila lipat paha leher diare langsung lebih satu minggu,infeksi hiv
+"nyeri tenggorokan, limfadenopati serviks, suhu tubuh berfluktuasi dan mencapai puncak pada malam hari, hepatomegaly, stomatitis",Mononukleosis Infeksioma,nyeri tenggorok limfadenopati serviks suhu tubuh fluktuasi capai puncak malam hari hepatomegaly stomatitis,mononukleosis infeksioma
+"Mialgia, nyeri telinga ketika mengunyah, pembengkakan pada kelenar parotis, pembengkakan pada kelenjar ludah",Gondongan,mialgia nyeri telinga kunyah bengkak kelenar parotis bengkak kelenjar ludah,gondong
+"kongesti nasal, batuk, bersin- bersin, malaise,nyeri tenggorokan, nyeri telinga, dyspnea, demam",Infeksi Virus Syncitial Respiratorius (Penyakit ringan),kongesti nasal batuk bersin bersin malaisenyeri tenggorok nyeri telinga dyspnea demam,infeksi virus syncitial respiratorius sakit ringan
+" pernapasan cuping hidung, retraksi pernapasan, sianosis, takipnea","Infeksi Virus Syncitial Respiratorius (Bronkitis, Pneumonia, Bronkitilis)",napas cuping hidung retraksi napas sianosis takipnea,infeksi virus syncitial respiratorius bronkitis pneumonia bronkitilis
+"makula kecil-kecil berwarna merah pada palatum mole, ruam makulopapuler agak gatal dimulai di wajah dan menyebar ke seluruh badan, nyeri tenggoroka, batuk",Rubela (campak jerman),makula kecilkecil warna merah palatum mole ruam makulopapuler gatal mulai wajah sebar seluruh badan nyeri tenggoroka batuk,rubela campak jerman
+"sakit kepala, nyeri punggung,serangan kejang pada anak, muntah pada anak, nyeri tenggorokan dan batuk",Cacar,sakit kepala nyeri punggungserangan kejang anak muntah anak nyeri tenggorok batuk,cacar
+"Anemia,ulkus pada orofaring, penyakit pernapasan ringan serupa dengan salesma berat atau influenza",Histoplasmosis primer akut,anemiaulkus orofaring sakit napas ringan rupa salesma berat influenza,histoplasmosis primer akut
+"Demam, menggigil, sakit kepala, mialgia",Malaria (bentuk benigma),demam gigil sakit kepala mialgia,malaria bentuk benigma
+"ruam disertai pruritus yang timbul sepintas pada tempat penetrasi serkaria, demam, myalgia, batuk",Skistosomiasis,ruam serta pruritus timbul pintas tempat penetrasi serkaria demam myalgia batuk,skistosomiasis
+"Korioretinitis, bercak seperti kapas yang menonjol dan berwarna putih-kuning, gangguan penglihatan",Taksoplasmosis okuler,korioretinitis bercak kapas tonjol warna putihkuning ganggu lihat,taksoplasmosis okuler
+"Malaise, sakit kepala, nyeri tenggorokan, ruam makulopapuler",Taksoplasmosis Akuisita,malaise sakit kepala nyeri tenggorok ruam makulopapuler,taksoplasmosis akuisita
+"hidrosefalus/mikrosefalus, serangan kejang, ikterus, purpura, ruam",Kongenital,hidrosefalusmikrosefalus serang kejang ikterus purpura ruam,kongenital
+"Asimptomatik, inflamasi dan rabas berwarna kuning kehijuauan",Gonore (Perempuan),asimptomatik inflamasi rabas warna kuning kehijuauan,gonore perempuan
+"Malaise, panas, sakit kepala, mialgia, menggigil",Antrax inhalasi,malaise panas sakit kepala mialgia gigil,antrax inhalasi
+"kenaikan cairan gingival, gusi merah dan bengkak, berdarah ketika gosok gigi atau pemeriksaan pada gigi, konsistensi lunak",Gingivitis,naik cair gingival gusi merah bengkak darah gosok gigi periksa gigi konsistensi lunak,gingivitis
+"Mata merah dan benjolan pada kelopak kanan disertai nyeri dan merah, terdapat secret mukopurulen, gatal, berair.",Conjunctivitis,mata merah benjol kelopak kanan serta nyeri merah dapat secret mukopurulen gatal air,conjunctivitis
+"telinga mengeluarkan nanah, daun telinga membengkak, merah, panas, terasa nyeri, jika ditekan terasa sakit, pembengkakan daun telinga menjalar ke bagian belakang daun telinga sehingga sangat menonjol",Perikondritis,telinga keluar nanah daun telinga bengkak merah panas asa nyeri tekan asa sakit bengkak daun telinga jalar bagi belakang daun telinga sangat tonjol,perikondritis
+"inflamasi eksudatif dan gatal,nyeri telinga, gatal, telinga terasa penuh, suara berdengung, telinga tersumbat, dengan tanda khas terdapat hifa dan spora, sekret.",Otomikosis,inflamasi eksudatif gatalnyeri telinga gatal telinga asa penuh suara dengung telinga sumbat tanda khas dapat hifa spora sekret,otomikosis
+" demam, muntah, sakit perut, dehidrasi",Diare virus,demam muntah sakit perut dehidrasi,diare virus
