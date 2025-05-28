@@ -16,15 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework.routers import DefaultRouter # Import DefaultRouter
-from edu_core.views import SchoolViewSet, StudentViewSet # Import viewsets yang baru Anda buat
+from rest_framework.routers import DefaultRouter
 
-# Buat router dan daftarkan viewsets kita dengannya
+# PASTIKAN BARIS INI BENAR-BENAR ADA DAN TIDAK ADA DUPLIKASI ATAU TYPO
+from edu_core.views import SchoolViewSet, StudentViewSet, SchoolAnalyticsView
+
 router = DefaultRouter()
-router.register(r'schools', SchoolViewSet) # URL: /api/schools/
-router.register(r'students', StudentViewSet) # URL: /api/students/
+router.register(r'schools', SchoolViewSet)
+router.register(r'students', StudentViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    # PASTIKAN BARIS INI JUGA ADA DAN TIDAK ADA TYPO
+    path('api/school-analytics/', SchoolAnalyticsView.as_view(), name='school-analytics'),
 ]

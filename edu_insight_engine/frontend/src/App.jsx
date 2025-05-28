@@ -1,103 +1,90 @@
 // frontend/src/App.jsx
+
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+// IMPOR UNTUK CHART.JS
+import { Bar } from 'react-chartjs-2';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
+
+// Daftarkan komponen Chart.js yang dibutuhkan
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 function App() {
-  // State untuk Schools
+  // --- State Manajemen ---
   const [schools, setSchools] = useState([]);
-  const [newSchool, setNewSchool] = useState({
-    name: '', address: '', city: '', province: '', contact_person: '', contact_email: ''
-  });
+  const [newSchool, setNewSchool] = useState({ name: '', address: '', city: '', province: '', contact_person: '', contact_email: '' });
   const [editingSchool, setEditingSchool] = useState(null);
 
-  // State untuk Students
   const [students, setStudents] = useState([]);
-  const [newStudent, setNewStudent] = useState({
-    first_name: '', last_name: '', date_of_birth: '', gender: '', school: ''
-  });
+  const [newStudent, setNewStudent] = useState({ first_name: '', last_name: '', date_of_birth: '', gender: '', school: '' });
   const [editingStudent, setEditingStudent] = useState(null);
 
-  // Global State untuk Loading, Error, dan Current View
+  // State untuk Data Analitik
+  const [schoolAnalytics, setSchoolAnalytics] = useState([]);
+
+  // Global State untuk Loading dan Current View
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [currentView, setCurrentView] = useState('schools'); // 'schools' or 'students'
+  const [currentView, setCurrentView] = useState('schools'); // Default view
 
-  // --- Fungsi-fungsi untuk Schools ---
+  // --- Handlers dan Fetchers ---
 
+  // School Handlers
   const fetchSchools = async () => {
     try {
-      setLoading(true);
       const response = await axios.get('http://127.0.0.1:8000/api/schools/');
       setSchools(response.data);
-      setLoading(false);
     } catch (err) {
-      setError(err);
-      setLoading(false);
       console.error("Error fetching schools:", err);
-      if (err.request) {
-        alert("Koneksi ke backend gagal. Pastikan server Django berjalan di port 8000 dan tidak ada masalah CORS. Periksa console browser Anda!");
-      }
+      setError(err);
     }
   };
 
   const handleSchoolChange = (e) => {
     const { name, value } = e.target;
     if (editingSchool) {
-      setEditingSchool(prevSchool => ({ ...prevSchool, [name]: value }));
+      setEditingSchool({ ...editingSchool, [name]: value });
     } else {
-      setNewSchool(prevSchool => ({ ...prevSchool, [name]: value }));
+      setNewSchool({ ...newSchool, [name]: value });
     }
   };
 
   const handleAddSchool = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/schools/', newSchool);
-      setSchools(prevSchools => [...prevSchools, response.data]);
+      await axios.post('http://127.0.0.1:8000/api/schools/', newSchool);
       setNewSchool({ name: '', address: '', city: '', province: '', contact_person: '', contact_email: '' });
-      alert('Sekolah berhasil ditambahkan!');
+      fetchSchools();
+      fetchSchoolAnalytics(); // Refresh analytics after adding school
     } catch (err) {
-      console.error("Error adding school:", err.response ? err.response.data : err.message);
-      alert('Gagal menambahkan sekolah. Periksa console untuk detail.');
+      console.error("Error adding school:", err);
+      setError(err);
     }
   };
 
   const handleEditSchoolClick = (school) => {
-    setEditingSchool(school);
-    setNewSchool({ name: '', address: '', city: '', province: '', contact_person: '', contact_email: '' }); // Clear new form
+    setEditingSchool({ ...school });
+    setNewSchool({ name: '', address: '', city: '', province: '', contact_person: '', contact_email: '' }); // Clear new school form
   };
 
   const handleUpdateSchool = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put(`http://127.0.0.1:8000/api/schools/${editingSchool.id}/`, editingSchool);
-      setSchools(prevSchools => prevSchools.map(school =>
-        school.id === editingSchool.id ? response.data : school
-      ));
+      await axios.put(`http://127.0.0.1:8000/api/schools/${editingSchool.id}/`, editingSchool);
       setEditingSchool(null);
-      alert('Sekolah berhasil diperbarui!');
+      setNewSchool({ name: '', address: '', city: '', province: '', contact_person: '', contact_email: '' });
+      fetchSchools();
+      fetchSchoolAnalytics(); // Refresh analytics after updating school
     } catch (err) {
-      console.error("Error updating school:", err.response ? err.response.data : err.message);
-      alert('Gagal memperbarui sekolah. Periksa console untuk detail.');
-    }
-  };
-
-  const handleDeleteSchool = async (id) => {
-    if (window.confirm('Apakah Anda yakin ingin menghapus sekolah ini? Semua siswa di sekolah ini juga akan terhapus.')) {
-      try {
-        await axios.delete(`http://127.0.0.1:8000/api/schools/${id}/`);
-        setSchools(prevSchools => prevSchools.filter(school => school.id !== id));
-        // Juga hapus siswa yang terkait dari state lokal
-        setStudents(prevStudents => prevStudents.filter(student => student.school !== id));
-        if (editingSchool && editingSchool.id === id) {
-          setEditingSchool(null);
-          setNewSchool({ name: '', address: '', city: '', province: '', contact_person: '', contact_email: '' });
-        }
-        alert('Sekolah berhasil dihapus!');
-      } catch (err) {
-        console.error("Error deleting school:", err.response ? err.response.data : err.message);
-        alert('Gagal menghapus sekolah. Periksa console untuk detail.');
-      }
+      console.error("Error updating school:", err);
+      setError(err);
     }
   };
 
@@ -106,85 +93,66 @@ function App() {
     setNewSchool({ name: '', address: '', city: '', province: '', contact_person: '', contact_email: '' });
   };
 
-  // --- Fungsi-fungsi untuk Students ---
+  const handleDeleteSchool = async (id) => {
+    try {
+      await axios.delete(`http://127.0.0.1:8000/api/schools/${id}/`);
+      fetchSchools();
+      fetchSchoolAnalytics(); // Refresh analytics after deleting school
+    } catch (err) {
+      console.error("Error deleting school:", err);
+      setError(err);
+    }
+  };
 
+  // Student Handlers
   const fetchStudents = async () => {
     try {
-      setLoading(true);
       const response = await axios.get('http://127.0.0.1:8000/api/students/');
       setStudents(response.data);
-      setLoading(false);
     } catch (err) {
-      setError(err);
-      setLoading(false);
       console.error("Error fetching students:", err);
-      if (err.request) {
-        alert("Koneksi ke backend gagal. Pastikan server Django berjalan di port 8000 dan tidak ada masalah CORS. Periksa console browser Anda!");
-      }
+      setError(err);
     }
   };
 
   const handleStudentChange = (e) => {
     const { name, value } = e.target;
     if (editingStudent) {
-      setEditingStudent(prevStudent => ({ ...prevStudent, [name]: value }));
+      setEditingStudent(prev => ({ ...prev, [name]: value }));
     } else {
-      setNewStudent(prevStudent => ({ ...prevStudent, [name]: value }));
+      setNewStudent(prev => ({ ...prev, [name]: value }));
     }
   };
 
   const handleAddStudent = async (e) => {
     e.preventDefault();
     try {
-      // Pastikan school ID ada dan valid
-      if (!newStudent.school) {
-          alert("Mohon pilih sekolah untuk siswa.");
-          return;
-      }
-      const response = await axios.post('http://127.0.0.1:8000/api/students/', newStudent);
-      setStudents(prevStudents => [...prevStudents, response.data]);
+      await axios.post('http://127.0.0.1:8000/api/students/', newStudent);
       setNewStudent({ first_name: '', last_name: '', date_of_birth: '', gender: '', school: '' });
-      alert('Siswa berhasil ditambahkan!');
+      fetchStudents();
+      fetchSchoolAnalytics(); // Refresh analytics after adding student
     } catch (err) {
-      console.error("Error adding student:", err.response ? err.response.data : err.message);
-      alert('Gagal menambahkan siswa. Pastikan semua field terisi dan ID Sekolah valid. Periksa console untuk detail.');
+      console.error("Error adding student:", err);
+      setError(err);
     }
   };
 
   const handleEditStudentClick = (student) => {
-    setEditingStudent(student);
-    setNewStudent({ first_name: '', last_name: '', date_of_birth: '', gender: '', school: '' }); // Clear new form
+    setEditingStudent({ ...student });
+    setNewStudent({ first_name: '', last_name: '', date_of_birth: '', gender: '', school: '' }); // Clear new student form
   };
 
   const handleUpdateStudent = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put(`http://127.0.0.1:8000/api/students/${editingStudent.id}/`, editingStudent);
-      setStudents(prevStudents => prevStudents.map(student =>
-        student.id === editingStudent.id ? response.data : student
-      ));
+      await axios.put(`http://127.0.0.1:8000/api/students/${editingStudent.id}/`, editingStudent);
       setEditingStudent(null);
-      alert('Siswa berhasil diperbarui!');
+      setNewStudent({ first_name: '', last_name: '', date_of_birth: '', gender: '', school: '' });
+      fetchStudents();
+      fetchSchoolAnalytics(); // Refresh analytics after updating student
     } catch (err) {
-      console.error("Error updating student:", err.response ? err.response.data : err.message);
-      alert('Gagal memperbarui siswa. Periksa console untuk detail.');
-    }
-  };
-
-  const handleDeleteStudent = async (id) => {
-    if (window.confirm('Apakah Anda yakin ingin menghapus siswa ini?')) {
-      try {
-        await axios.delete(`http://127.0.0.1:8000/api/students/${id}/`);
-        setStudents(prevStudents => prevStudents.filter(student => student.id !== id));
-        if (editingStudent && editingStudent.id === id) {
-          setEditingStudent(null);
-          setNewStudent({ first_name: '', last_name: '', date_of_birth: '', gender: '', school: '' });
-        }
-        alert('Siswa berhasil dihapus!');
-      } catch (err) {
-        console.error("Error deleting student:", err.response ? err.response.data : err.message);
-        alert('Gagal menghapus siswa. Periksa console untuk detail.');
-      }
+      console.error("Error updating student:", err);
+      setError(err);
     }
   };
 
@@ -193,38 +161,50 @@ function App() {
     setNewStudent({ first_name: '', last_name: '', date_of_birth: '', gender: '', school: '' });
   };
 
-  // --- UseEffect untuk memuat data berdasarkan currentView ---
+  const handleDeleteStudent = async (id) => {
+    try {
+      await axios.delete(`http://127.0.0.1:8000/api/students/${id}/`);
+      fetchStudents();
+      fetchSchoolAnalytics(); // Refresh analytics after deleting student
+    } catch (err) {
+      console.error("Error deleting student:", err);
+      setError(err);
+    }
+  };
+
+  // --- School Analytics Fetcher ---
+  const fetchSchoolAnalytics = async () => {
+      try {
+          const response = await axios.get('http://127.0.0.1:8000/api/school-analytics/');
+          setSchoolAnalytics(response.data);
+      } catch (err) {
+          console.error("Error fetching school analytics:", err);
+          setError(err);
+      }
+  };
+
+  // --- useEffect untuk memuat data saat komponen mount ---
   useEffect(() => {
-    // Saat komponen dimuat atau currentView berubah, kita ambil data yang relevan
-    // Pastikan kedua data (sekolah dan siswa) diambil agar dropdown sekolah selalu tersedia
     const initializeData = async () => {
-        setLoading(true);
-        try {
-            await fetchSchools(); // Selalu ambil sekolah
-            await fetchStudents(); // Selalu ambil siswa
-        } catch (e) {
-            console.error("Error initializing data:", e);
-            // Error handling sudah ada di masing-masing fetch function
-        } finally {
-            setLoading(false);
-        }
+      setLoading(true);
+      try {
+        await fetchSchools();
+        await fetchStudents();
+        await fetchSchoolAnalytics(); // PANGGIL FUNGSI ANALITIK SAAT INISIALISASI
+      } catch (e) {
+        console.error("Error initializing data:", e);
+        setError(e);
+      } finally {
+        setLoading(false);
+      }
     };
     initializeData();
-  }, []); // Hanya berjalan sekali saat komponen mount
+  }, []);
 
-  // --- Tampilan Loading/Error Global ---
-  if (loading) {
-    return <div style={{ textAlign: 'center', marginTop: '50px' }}>Memuat data...</div>;
-  }
-
-  if (error) {
-    return <div style={{ textAlign: 'center', color: 'red', marginTop: '50px' }}>Terjadi Kesalahan: {error.message}. Silakan periksa console browser Anda untuk detail (misalnya, masalah CORS).</div>;
-  }
-
-  // --- Render Aplikasi ---
+  // --- Render Komponen ---
   return (
-    <div style={{ fontFamily: 'Arial, sans-serif', maxWidth: '800px', margin: 'auto', padding: '20px' }}>
-      <h1 style={{ textAlign: 'center', color: '#333' }}>Edu Insight Engine Dashboard</h1>
+    <div className="App" style={{ fontFamily: 'Arial, sans-serif', maxWidth: '900px', margin: '30px auto', padding: '20px', border: '1px solid #e0e0e0', borderRadius: '10px', boxShadow: '0 5px 15px rgba(0,0,0,0.1)' }}>
+      <h1 style={{ textAlign: 'center', color: '#333', marginBottom: '30px' }}>Edu Insight Engine</h1>
 
       {/* Navigasi */}
       <div style={{ textAlign: 'center', marginBottom: '30px' }}>
@@ -240,10 +220,20 @@ function App() {
         >
           Manajemen Siswa
         </button>
+        <button
+          onClick={() => setCurrentView('analytics')}
+          style={{ ...navButtonStyle, backgroundColor: currentView === 'analytics' ? '#28a745' : '#6c757d' }}
+        >
+          Statistik Sekolah
+        </button>
       </div>
 
       {/* Kondisional Render Berdasarkan currentView */}
-      {currentView === 'schools' ? (
+      {loading ? (
+        <p style={{ textAlign: 'center', fontSize: '18px', color: '#555' }}>Memuat data...</p>
+      ) : error ? (
+        <p style={{ textAlign: 'center', fontSize: '18px', color: 'red' }}>Error: {error.message}</p>
+      ) : currentView === 'schools' ? (
         // --- Tampilan Manajemen Sekolah ---
         <>
           <h2 style={{ textAlign: 'center', color: '#0056b3' }}>Manajemen Sekolah</h2>
@@ -318,7 +308,7 @@ function App() {
             </ul>
           )}
         </>
-      ) : (
+      ) : currentView === 'students' ? (
         // --- Tampilan Manajemen Siswa ---
         <>
           <h2 style={{ textAlign: 'center', color: '#0056b3' }}>Manajemen Siswa</h2>
@@ -403,6 +393,64 @@ function App() {
             </ul>
           )}
         </>
+      ) : currentView === 'analytics' ? ( // --- BLOK BARU INI UNTUK ANALISIS ---
+        <>
+          <h2 style={{ textAlign: 'center', color: '#28a745' }}>Statistik Sekolah</h2>
+          <div style={{ padding: '20px', background: '#f8f9fa', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0,0,0,0.1)' }}>
+            <h3 style={{ textAlign: 'center', marginBottom: '20px', color: '#218838' }}>Jumlah Siswa per Sekolah</h3>
+            {schoolAnalytics.length > 0 ? (
+                <Bar
+                    data={{
+                        labels: schoolAnalytics.map(s => s.name),
+                        datasets: [
+                            {
+                                label: 'Jumlah Siswa',
+                                data: schoolAnalytics.map(s => s.student_count),
+                                backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                                borderColor: 'rgba(75, 192, 192, 1)',
+                                borderWidth: 1,
+                            },
+                        ],
+                    }}
+                    options={{
+                        responsive: true,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Jumlah Siswa per Sekolah',
+                            },
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                            },
+                        },
+                    }}
+                />
+            ) : (
+                <p style={{ textAlign: 'center', color: '#555' }}>Tidak ada data analitik sekolah yang tersedia.</p>
+            )}
+          </div>
+
+          <div style={{ padding: '20px', background: '#f8f9fa', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0,0,0,0.1)', marginTop: '30px' }}>
+            <h3 style={{ textAlign: 'center', marginBottom: '20px', color: '#218838' }}>Distribusi Gender Siswa per Sekolah</h3>
+            {schoolAnalytics.length > 0 ? (
+                <ul style={{ listStyleType: 'none', padding: 0 }}>
+                    {schoolAnalytics.map(school => (
+                        <li key={school.id} style={{ ...listItemStyle, display: 'block' }}>
+                            <h5 style={{ margin: '0 0 5px 0', color: '#0056b3' }}>{school.name}</h5>
+                            <p style={{ margin: '2px 0' }}>Laki-laki: {school.gender_distribution.L} siswa</p>
+                            <p style={{ margin: '2px 0' }}>Perempuan: {school.gender_distribution.P} siswa</p>
+                        </li>
+                    ))}
+                </ul>
+            ) : (
+                <p style={{ textAlign: 'center', color: '#555' }}>Tidak ada data analitik gender yang tersedia.</p>
+            )}
+          </div>
+        </>
+      ) : (
+        <p style={{ textAlign: 'center' }}>Pilih opsi di atas untuk melihat data.</p>
       )}
     </div>
   );
@@ -417,7 +465,6 @@ const inputStyle = {
   width: 'calc(100% - 22px)',
   boxSizing: 'border-box'
 };
-
 const buttonStyle = {
   gridColumn: '1 / -1',
   padding: '10px 20px',
@@ -452,8 +499,7 @@ const actionButtonStyle = {
   border: 'none',
   fontWeight: 'bold'
 };
-
-const listItemStyle = { // Ini yang tadi terlewat!
+const listItemStyle = {
   background: '#f9f9f9',
   border: '1px solid #ddd',
   borderRadius: '8px',
